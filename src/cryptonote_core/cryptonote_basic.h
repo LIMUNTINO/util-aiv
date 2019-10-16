@@ -430,6 +430,7 @@ namespace cryptonote
     uint64_t timestamp;
     crypto::hash prev_id;
     uint32_t nonce;
+    uint8_t algorithm;
 
     BEGIN_SERIALIZE()
       VARINT_FIELD(major_version)
@@ -437,6 +438,7 @@ namespace cryptonote
       if (blob_type != BLOB_TYPE_FORKNOTE2) VARINT_FIELD(timestamp)
       FIELD(prev_id)
       if (blob_type != BLOB_TYPE_FORKNOTE2) FIELD(nonce)
+      if (blob_type == BLOB_TYPE_CRYPTONOTE_KRB) VARINT_FIELD(algorithm)
     END_SERIALIZE()
   };
 
