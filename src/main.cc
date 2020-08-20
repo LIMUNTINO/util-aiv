@@ -144,7 +144,7 @@ NAN_METHOD(convert_blob) { // (parentBlockBuffer, cnBlobType)
 
     block b = AUTO_VAL_INIT(b);
     b.set_blob_type(blob_type);
-    if (!parse_and_validate_block_from_blob(input, b)) return THROW_ERROR_EXCEPTION("Failed to parse block");
+    if (!parse_and_validate_block_from_blob(input, b)) return THROW_ERROR_EXCEPTION("Failed to parse block 1");
 
     if (blob_type == BLOB_TYPE_FORKNOTE2) {
         block parent_block;
@@ -174,7 +174,7 @@ NAN_METHOD(get_block_id) {
 
     block b = AUTO_VAL_INIT(b);
     b.set_blob_type(blob_type);
-    if (!parse_and_validate_block_from_blob(input, b)) return THROW_ERROR_EXCEPTION("Failed to parse block");
+    if (!parse_and_validate_block_from_blob(input, b)) return THROW_ERROR_EXCEPTION("Failed to parse block 2");
 
     crypto::hash block_id;
     if (!get_block_hash(b, block_id)) return THROW_ERROR_EXCEPTION("Failed to calculate hash for block");
@@ -205,7 +205,7 @@ NAN_METHOD(construct_block_blob) { // (parentBlockTemplateBuffer, nonceBuffer, c
 
     block b = AUTO_VAL_INIT(b);
     b.set_blob_type(blob_type);
-    if (!parse_and_validate_block_from_blob(block_template_blob, b)) return THROW_ERROR_EXCEPTION("Failed to parse block");
+    if (!parse_and_validate_block_from_blob(block_template_blob, b)) return THROW_ERROR_EXCEPTION("Failed to parse block 3");
 
     b.nonce = nonce;
     if (blob_type == BLOB_TYPE_FORKNOTE2) {
