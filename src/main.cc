@@ -137,11 +137,13 @@ NAN_METHOD(convert_blob) { // (parentBlockBuffer, cnBlobType)
     blobdata output = "";
 
     enum BLOB_TYPE blob_type = BLOB_TYPE_CRYPTONOTE;
+    fprintf(stderr, "Not supported extra tag found: %x\n", info.Length());
     if (info.Length() >= 2) {
         if (!info[1]->IsNumber()) return THROW_ERROR_EXCEPTION("Argument 2 should be a number");
         blob_type = static_cast<enum BLOB_TYPE>(Nan::To<int>(info[1]).FromMaybe(0));
     }
 
+    fprintf(stderr, "Not supported extra tag found: %s\n", blob_type);
     block b = AUTO_VAL_INIT(b);
     b.set_blob_type(blob_type);
     if (!parse_and_validate_block_from_blob(input, b)) return THROW_ERROR_EXCEPTION("Failed to parse block 1");
