@@ -134,10 +134,12 @@ namespace cryptonote
   {
     uint64_t amount;
     txout_target_v target;
+    std::string message_public;
 
     BEGIN_SERIALIZE_OBJECT()
       VARINT_FIELD(amount)
       FIELD(target)
+      FIELD(message_public)
     END_SERIALIZE()
   };
 
